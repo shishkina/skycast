@@ -16,6 +16,8 @@ db.once('open', (callback) => {
   console.log('mongoose connected');
 })
 
+let routes = require('./config/userRoutes');
+
 app.use(cors());
 
 app.use(logger('dev'));

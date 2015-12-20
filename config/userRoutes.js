@@ -3,10 +3,9 @@
 let express = require('express');
 let router = express.Router();
 let bodyParser = require('body-parser');
-let methodOverride = require('method-override');
 let jwt = require('jsonwebtoken');
 
-let secret = SECRET;
+let secret = process.env.SECRET;
 
 let usersController = require('../controllers/usersController');
 
@@ -37,7 +36,7 @@ router.use( (req,res,next) => {
 });
 
 router.route('/user/:id')
-  .get(usersConrroller.getUser)
+  .get(usersController.getUser)
 
   .put(usersController.updateUser)
 

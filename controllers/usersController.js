@@ -4,7 +4,7 @@ let User = require('../models/user');
 
 const expressJwt = require('express-jwt');
 const jwt = require('jsonwebtoken');
-const secret = SECRET;
+const secret = process.env.SECRET;
 
 //GET
 function getUser(req,res) {

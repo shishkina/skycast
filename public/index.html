@@ -5,14 +5,35 @@
     <title></title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="scripts/materialize-css/dist/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="scripts/jquery/dist/jquery.min.js"></script>
     <script src="scripts/materialize-css/dist/js/materialize.min.js"></script>
     <script src="scripts/angular/angular.js"></script>
     <script src="scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/jquery-init.js"></script>
   </head>
-  <body ng-app="skyCast">
-    {{2+2}}
+  <body class="grey lighten-3" ng-app="skyCast">
+    <nav>
+    <div class="nav-wrapper blue darken-1">
+      <a href="#!" class="brand-logo">SkyCast</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a ui-sref="#">home</a></li>
+        <li><a ui-sref="#">sign up</a></li>
+        <li><a ui-sref="#">sign in</a></li>
+        <li><a ui-sref="#">sign out</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a ui-sref="#">home</a></li>
+        <li><a ui-sref="#">sign up</a></li>
+        <li><a ui-sref="#">sign in</a></li>
+        <li><a ui-sref="#">sign out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  
   </body>
 </html>

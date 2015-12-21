@@ -10,11 +10,11 @@ function SignupController($http, $state, User) {
     queries: [],
   }
 
-  self.signup = function() {
+  self.sendUser = function(user) {
     $http({
       method: 'POST',
       url: '/user/new',
-      data: self.signupUser,
+      data: user,
       headers: {'Content-Type': 'application/json'}
     }).then( (user) => {
       if (success === true) {

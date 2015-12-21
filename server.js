@@ -6,6 +6,8 @@ let logger = require('morgan');
 let bodyParser = require('body-parser');
 let app = express();
 
+
+
 let mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/skycast')
 
@@ -15,13 +17,16 @@ db.once('open', (callback) => {
   console.log('mongoose connected');
 })
 
-let user = require('./controllers/usersController');
-app.use('/user', user);
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+let user = require('./controllers/usersController');
+app.use('/user', user);
+
+
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/scripts', express.static(__dirname + '/node_modules'));

@@ -45,7 +45,7 @@ router.route('/login')
 router.route('/new')
   .post( (req, res) => {
     //create new user route
-
+    debugger;
     let user = new User(req.body);
 
     user.save( (error) => {

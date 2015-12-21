@@ -27,9 +27,6 @@ function LoginController($http, $state, User) {
       else {
         $state.go('login')
       }
-
-      //validate for proper user login, if not redirect back.
-      debugger;
     })
   }
 

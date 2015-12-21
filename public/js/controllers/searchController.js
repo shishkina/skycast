@@ -1,6 +1,6 @@
 'use strict';
 
-function SeachController(User, $html, $state) {
+function SearchController(User, $html, $state) {
   let self = this;
   self.searchByGeoLocation = function() {
     let GOOGLE_KEY = process.env.GOOGLE_KEY;
@@ -22,7 +22,7 @@ function SeachController(User, $html, $state) {
     document.getElementById('startLon').innerHTML = startPost.coords.longitude;
   };
 
-  function geoError = function(error) {
+  function geoError(error) {
     console.log('Error occurred. Error code: ' + error.code);
   };
 }

@@ -1,0 +1,3 @@
+function navBarController(User, $state) {
+
+}

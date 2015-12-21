@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="skyCast">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -10,22 +10,25 @@
     <script src="scripts/jquery/dist/jquery.min.js"></script>
     <script src="scripts/materialize-css/dist/js/materialize.min.js"></script>
     <script src="js/factories/user.js"></script>
+    <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/navBarController.js"></script> 
     <script src="scripts/angular/angular.js"></script>
     <script src="scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/appRouter.js"></script>
     <script src="js/jquery-init.js"></script>
+
   </head>
-  <body class="grey lighten-3" ng-app="skyCast">
+  <body class="grey lighten-3">
     <nav>
     <div class="nav-wrapper blue darken-1">
       <a href="#!" class="brand-logo">SkyCast</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a ui-sref="#">home</a></li>
-        <li><a ui-sref="#">sign up</a></li>
-        <li><a ui-sref="#">sign in</a></li>
-        <li><a ui-sref="#">sign out</a></li>
+        <li><a ui-sref="home">home</a></li>
+        <li><a ui-sref="signUp">sign up</a></li>
+        <li><a ui-sref="login">sign in</a></li>
+        <li><a ui-sref="logout">sign out</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a ui-sref="#">home</a></li>
@@ -35,6 +38,10 @@
       </ul>
     </div>
   </nav>
+
+  <div ui-view>
+
+  </div>
 
 
   </body>

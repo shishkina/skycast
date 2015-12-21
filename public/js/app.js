@@ -8,6 +8,20 @@ angular.module('skyCast', [
   .controller('NavController', NavController)
   .controller('SignupController', SignupController)
   //.controller('searchController', searchController)
+  .run(['$rootScope','$state','User', 'Restaurant', function($rootScope, $state, User, Restaurant) {
+
+    $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
+      let isAuthenticationRequired = toState.data
+        && toState.data.requiresLogin
+        && !User.getLoginState();
+
+      if (isAuthenticationRequired) {
+        event.preventDefault();
+        $state.go('login');
+      }
+    })
+  }]);
+
 
   User.$inject = ['$http','$state'];
   SignupController.$inject = ['$http', '$state', 'User'];

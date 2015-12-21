@@ -11,13 +11,23 @@ function LoginController($http, $state, User) {
     password: ''
   }
 
-  self.logIn = function() {
+  self.logIn = function(user) {
     $http({
       method: 'POST',
       url: '/user/login',
-      data: self.logInUser,
+      data: user,
       headers: {'Content-Type': 'application/json'}
     }).then( (data) => {
+      if (data.data.success) {
+        User.setCurrentUser(data.data.user);
+        User.setLoginState(true);
+        $http.defaults.headers.common.Authorization = data.data.token;
+        $state.go('profile')
+      }
+      else {
+        $state.go('login')
+      }
+
       //validate for proper user login, if not redirect back.
       debugger;
     })

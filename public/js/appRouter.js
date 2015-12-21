@@ -22,5 +22,12 @@ angular.module('skyCast')
         url: '/signout',
         templateUrl: 'js/templates/signout.html'
       })
+      .state('profile', {
+        url: '/profile',
+        tempalteUrl: 'js/templates/signout.html'
+        data: {
+          requiresLogin: true
+        }
+      })
 
   }

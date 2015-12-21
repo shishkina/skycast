@@ -1,7 +1,7 @@
 <div ng-controller="SearchController as home" class="container row">
-  <h3 class="flow-text">Your Local Weather, delivered </h3>
+  <h3 class="flow-text">Your Local Weather, delivered: </h3>
   <div class="row">
-    <div class="col s12 m5">
+    <div class="col s12 m6">
       <div class="card-panel teal">
         <h4 class="white-text">Current weather:</h4>
         <h5 class="white-text">your location:</h5>
@@ -12,12 +12,23 @@
         </span>
       </div>
     </div>
-    <div class="col s12 m5">
+    <div class="col s12 m6">
       <div class="card-panel teal">
-        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+        <h4 class="white-text">Looking Ahead:</h4>
+        <span class="white-text">
+          <p> {{home.weather.daily.summary}} </p>
+          <p>Max temperature tomorrow: {{home.weather.daily.data[0].temperatureMax}} &#8457</p>
+          <p>Min temperature tomorrow: {{home.weather.daily.data[0].temperatureMin}} &#8457</p>
         </span>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div ng-controller="NavController as homePage">
+
+        <a ng-click="homePage.logIn()" class="waves-effect waves-light btn-large">Log In</a>
+        <a ng-click="homePage.signUp()" class="waves-effect waves-light btn-large">Sign Up</a>
+
     </div>
   </div>
 </div>

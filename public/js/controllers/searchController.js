@@ -20,8 +20,8 @@ function SearchController(User, $http, $state) {
         self.coords = getLocation(data);
         $http({
           method: 'GET',
-          url: '/geo/' + self.coords.lat + '/' + self.coords.lng
-          
+          url: '/weather/' + self.coords.lat + '/' + self.coords.lng
+
         }).then( (weatherData) => {
           if (weatherData.status === 200) {
             self.weather = weatherData.data;
@@ -34,8 +34,7 @@ function SearchController(User, $http, $state) {
       else {
         alert('something went wrong during locating you!');
       }
-      console.log('data done');
-    })
+    });
   }
 
   self.load($http)

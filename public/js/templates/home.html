@@ -1,5 +1,23 @@
 <div ng-controller="SearchController as home" class="container row">
   <h3 class="flow-text">Your Local Weather, delivered </h3>
-  
-
+  <div class="row">
+    <div class="col s12 m5">
+      <div class="card-panel teal">
+        <h4 class="white-text">Current weather:</h4>
+        <h5 class="white-text">your location:</h5>
+        <span class="white-text">
+          <p> {{home.weather.currently.summary}} </p>
+          <p>Temperature: {{home.weather.currently.temperature}} &#8457</p>
+          <p>Feels Like:  {{home.weather.currently.apparentTemperature}} &#8457</p>
+        </span>
+      </div>
+    </div>
+    <div class="col s12 m5">
+      <div class="card-panel teal">
+        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+        </span>
+      </div>
+    </div>
+  </div>
 </div>

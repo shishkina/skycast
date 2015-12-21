@@ -3,11 +3,12 @@
 angular.module('skyCast', [
   'ui.router',
 ])
-  .factory('User', ['$http'], User)
-  .controller('loginController', loginController)
-  .controller('navController', navController)
-  .controller('searchController', searchController)
+  .factory('User', User)
+  .controller('LoginController', LoginController)
+  .controller('NavController', NavController)
+  //.controller('searchController', searchController)
 
-  loginController.$inject = ['User','$state'];
-  navController.$inject = ['User', '$state', '$http'];
-  searchController.$inject = ['User', '$state', '$http'];
+  User.$inject = ['$http','$state']
+  LoginController.$inject = ['User','$state'];
+  NavController.$inject = ['User', '$state', '$http'];
+  //searchController.$inject = ['User', '$state', '$http'];

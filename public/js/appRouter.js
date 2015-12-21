@@ -12,7 +12,7 @@ angular.module('skyCast')
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'js/templates/login.html'
+        templateUrl: 'js/templates/login.html',
       })
       .state('signUp', {
         url: '/signup',

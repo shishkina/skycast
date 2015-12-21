@@ -4,7 +4,6 @@ function User($http) {
 
 //private variables and functions
   let currentUser = {};
-  let userForLogin = {};
   let loginState = false;
 
   return {

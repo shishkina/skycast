@@ -4,6 +4,7 @@ angular.module('skyCast', [
   'ui.router',
 ])
   .factory('User', User)
+  .factory('Weather', Weather)
   .controller('LoginController', LoginController)
   .controller('NavController', NavController)
   .controller('SignupController', SignupController)
@@ -27,4 +28,4 @@ angular.module('skyCast', [
   SignupController.$inject = ['$http', '$state', 'User'];
   LoginController.$inject = ['$http', '$state', 'User'];
   NavController.$inject = ['User', '$state', '$http'];
-  SearchController.$inject = ['User', '$http', '$state'];
+  SearchController.$inject = ['User', 'Weather', '$http', '$state'];

@@ -1,14 +1,12 @@
 'use strict';
 
-function SearchController(User, $http, $state) {
+function SearchController(User, Weather, $http, $state) {
   let self = this;
 
   self.coords = {
     lat: null,
     lng: null
   }
-
-  self.weather = {};
 
   self.load = function($http) {
 
@@ -24,7 +22,7 @@ function SearchController(User, $http, $state) {
 
         }).then( (weatherData) => {
           if (weatherData.status === 200) {
-            self.weather = weatherData.data;
+            Weather.setCurrentWeather = weatherData.data;
           }
           else {
             alert('error fetching weather data!');
@@ -35,6 +33,10 @@ function SearchController(User, $http, $state) {
         alert('something went wrong during locating you!');
       }
     });
+  }
+
+  self.getWeather = function() {
+    return Weather.getCurrentWeather();
   }
 
   self.load($http)

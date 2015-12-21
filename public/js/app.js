@@ -27,4 +27,4 @@ angular.module('skyCast', [
   SignupController.$inject = ['$http', '$state', 'User'];
   LoginController.$inject = ['$http', '$state', 'User'];
   NavController.$inject = ['User', '$state', '$http'];
-  SearchController.$inject = ['User', '$state', '$http'];
+  SearchController.$inject = ['User', '$http', '$state'];

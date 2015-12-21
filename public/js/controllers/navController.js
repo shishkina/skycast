@@ -7,10 +7,12 @@ function NavController($http, $state, User) {
   let self = this;
 
   self.logOut = function() {
-    $http.defaults.headers.common.Authorization = '';
+    if ($http.defaults) {
+      $http.defaults.headers.common.Authorization = '';
 
-    User.setCurrentUser( {} );
-    User.setLoginState(false);
+      User.setCurrentUser( {} );
+      User.setLoginState(false);
+    }
     $state.go('home');
   }
 

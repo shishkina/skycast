@@ -3,7 +3,7 @@
 //
 // LoginController.$inject = ['User','$state','$http'];
 
-function LoginController(User, $state, $http) {
+function LoginController($http, $state, User) {
   let self = this;
 
   self.logInUser = {
@@ -14,7 +14,7 @@ function LoginController(User, $state, $http) {
   self.logIn = function() {
     $http({
       method: 'POST',
-      url: '/users/login',
+      url: '/user/login',
       data: self.logInUser,
       headers: {'Content-Type': 'application/json'}
     }).then( (data) => {

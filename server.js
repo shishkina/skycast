@@ -2,7 +2,6 @@
 
 let express = require('express');
 let path = require('path');
-let cors = require('cors');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
 let app = express();
@@ -16,15 +15,15 @@ db.once('open', (callback) => {
   console.log('mongoose connected');
 })
 
-let routes = require('./config/userRoutes');
+let user = require('./controllers/usersController');
+app.use('/user', user);
 
-app.use(cors());
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, '/public')));
 
-app.use('/', express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 
 let server = app.listen(process.env.PORT || 3000, () => {

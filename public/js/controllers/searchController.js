@@ -1,28 +1,23 @@
 'use strict';
 
-function SearchController(User, $html, $state) {
+function SearchController(User, $http, $state) {
   let self = this;
-  self.searchByGeoLocation = function() {
-    let GOOGLE_KEY = process.env.GOOGLE_KEY;
-    let apiURL = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + GOOGLE_KEY;
-    let startPos = undefined;
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-    }
-    else {
-
-    }
+  self.coords = {
+    lat: null,
+    long: null
   }
 
-  //helper function:
-  function geoSuccess(position) {
-    startPost = position;
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPost.coords.longitude;
-  };
+  self.load = function() {
+    //jquery code here
+    $http({
+      method: 'POST',
+      url: 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + process.env.GOOGLE_KEY,
+    }).then( (data) => {
+      console.log('data done');
+    })
+  }
 
-  function geoError(error) {
-    console.log('Error occurred. Error code: ' + error.code);
-  };
+
+  self.load();
 }

@@ -22,9 +22,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-let user = require('./controllers/usersController');
-app.use('/user', user);
 
+let user = require('./controllers/usersController');
+let geo  = require('./controllers/geoController');
+
+app.use('/user', user);
+app.use('/geo', geo);
 
 
 app.use(express.static(path.join(__dirname, '/public')));

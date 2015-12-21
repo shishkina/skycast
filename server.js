@@ -29,6 +29,7 @@ let weather = require('./controllers/weatherController');
 
 app.use('/user', user);
 app.use('/geo', geo);
+app.use('/weather', weather);
 
 
 app.use(express.static(path.join(__dirname, '/public')));

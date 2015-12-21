@@ -21,9 +21,10 @@ function SearchController(User, $http, $state) {
         $http({
           method: 'GET',
           url: '/geo/' + self.coords.lat + '/' + self.coords.lng
+          
         }).then( (weatherData) => {
           if (weatherData.status === 200) {
-
+            self.weather = weatherData.data;
           }
           else {
             alert('error fetching weather data!');

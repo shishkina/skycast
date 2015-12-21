@@ -13,16 +13,15 @@ let userSchema = new mongoose.Schema({
 });
 
 //middleware
-
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
   let user = this;
+  debugger;
   if(!user.isModified('password')) return next();
 
-  bcrypt.genSalt(5, (err, salt) => {
+  bcrypt.genSalt(5, (err,salt) => {
     if (err) return next(err);
-
-    bcrypt.hash(user.password, salt, (error, hash) => {
-      if (error) return next(error);
+    bcrypt.hash(user.password, salt, (error,hash) => {
+      if(error) return next(error);
 
       user.password = hash;
       next();
@@ -30,11 +29,13 @@ userSchema.pre('save', (next) => {
   });
 });
 
-userSchema.methods.authenticate = function(password, callback) {
+userSchema.methods.authenticate = function(password,callback) {
+
   bcrypt.compare(password, this.password, (err, isMatch) => {
     callback(null, isMatch);
   });
 }
+//end middleware
 
 let User = mongoose.model('User', userSchema);
 

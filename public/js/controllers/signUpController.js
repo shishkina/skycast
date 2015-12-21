@@ -17,10 +17,11 @@ function SignupController($http, $state, User) {
       data: user,
       headers: {'Content-Type': 'application/json'}
     }).then( (user) => {
-      if (success === true) {
+      if (user.data.success === true) {
         $state.go('login');
       }
       else {
+        //put a flash message here or something notify that signup failed
         $state.go('signup');
       }
     });

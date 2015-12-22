@@ -5,7 +5,6 @@ let express = require('express');
 let router = express.Router();
 let bodyParser = require('body-parser');
 
-const expressJwt = require('express-jwt');
 const jwt = require('jsonwebtoken');
 const secret = process.env.SECRET;
 

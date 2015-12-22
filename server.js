@@ -24,11 +24,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 let user = require('./controllers/usersController');
-let geo  = require('./controllers/geoController');
 let weather = require('./controllers/weatherController');
 
 app.use('/user', user);
-app.use('/geo', geo);
 app.use('/weather', weather);
 
 

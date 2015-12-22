@@ -1,13 +1,13 @@
 'use strict';
 
-function weather() {
+function Weather() {
 
   let weather = {};
 
   return {
     setCurrentWeather: function(weatherObj) {
       weather = weatherObj;
-    }
+    },
 
     getCurrentWeather: function() {
       return weather;

@@ -9,30 +9,7 @@ function SearchController(User, Weather, $http, $state) {
   }
 
   self.load = function($http) {
-
-    $http({
-      method: 'GET',
-      url: '/geo',
-    }).then( (data) => {
-      if (data.status === 200) {
-        self.coords = getLocation(data);
-        $http({
-          method: 'GET',
-          url: '/weather/' + self.coords.lat + '/' + self.coords.lng
-
-        }).then( (weatherData) => {
-          if (weatherData.status === 200) {
-            Weather.setCurrentWeather = weatherData.data;
-          }
-          else {
-            alert('error fetching weather data!');
-          }
-        });
-      }
-      else {
-        alert('something went wrong during locating you!');
-      }
-    });
+    navigator.geolocation.getCurrentPosition(success)
   }
 
   self.getWeather = function() {
@@ -43,9 +20,23 @@ function SearchController(User, Weather, $http, $state) {
 
   //helper functions:
 
-  function getLocation(data) {
-    //expects data response from google location API
-    return data.data.location
+  function success(pos) {
+
+    self.coords.lat = pos.coords.latitude;
+    self.coords.lng = pos.coords.longitude;
+
+    $http({
+      method: 'GET',
+      url: '/weather/' + self.coords.lat + '/' + self.coords.lng
+    }).then( (weatherData) => {
+      if (weatherData.status === 200) {
+        Weather.setCurrentWeather(weatherData.data);
+      }
+      else {
+        alert('error fetching weather data!');
+      }
+    });
   }
+
 
 }

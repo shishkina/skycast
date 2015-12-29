@@ -1,6 +1,7 @@
 'use strict';
 
 function SearchController(User, Weather, $http, $state) {
+  console.log('instance of search controller!');
   let self = this;
 
   self.coords = {
@@ -9,6 +10,7 @@ function SearchController(User, Weather, $http, $state) {
   }
 
   self.load = function($http) {
+    console.log('getting current location!');
     navigator.geolocation.getCurrentPosition(success)
   }
 
@@ -16,12 +18,14 @@ function SearchController(User, Weather, $http, $state) {
     return Weather.getCurrentWeather();
   }
 
-  setTimeout(self.load($http), 500);
+  //setTimeout(self.load($http), 500);
+
+  self.load($http)
 
   //helper functions:
 
   function success(pos) {
-
+    console.log('In success function!');
     self.coords.lat = pos.coords.latitude;
     self.coords.lng = pos.coords.longitude;
 

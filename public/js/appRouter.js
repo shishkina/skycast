@@ -3,7 +3,7 @@ angular.module('skyCast')
 
   function AppRouter($stateProvider, $urlRouterProvider, $httpProvider){
 
-    //$urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
       .state('home', {

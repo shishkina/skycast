@@ -16,7 +16,7 @@ function SearchController(User, Weather, $http, $state) {
     return Weather.getCurrentWeather();
   }
 
-  self.load($http)
+  setTimeout(self.load($http), 500);
 
   //helper functions:
 

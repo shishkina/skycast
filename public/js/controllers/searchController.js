@@ -14,13 +14,22 @@ function SearchController(User, Weather, $http, $state) {
   self.location = "Your Location";
 
   self.searchWeather = function() {
+    let userID = User.getCurrentUser()._id
+
     if (self.searchFor) {
       $http({
-        method: 'GET',
-        url: '/location/'+self.searchFor
-      }).then( (data) => {
-        console.log('we got data!');
-      })
+        method: 'PUT',
+        url: '/user/'+userID,
+        data: {newQuery: self.searchFor}
+      }).then( (response) => {
+        console.log('break')
+        $http({
+          method: 'GET',
+          url: '/location/'+self.searchFor
+        }).then( (data) => {
+          console.log('we got data!');
+        });
+      });
     }
   }
 

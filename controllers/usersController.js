@@ -85,12 +85,13 @@ router.use( (req,res,next) => {
 router.route('/:id')
   .get( (req, res) => {
     //gets a user page
+
   })
   .put( (req, res) => {
     //updates a user
     let userID = req.params.id;
-    let newQuery = req.body.query;
-    let removeQuery = req.boy.removeQuery;
+    let newQuery = req.body.newQuery;
+    let removeQuery = req.body.removeQuery;
     if (removeQuery) {
     User.findByIdAndUpdate(
       userID,
@@ -114,8 +115,7 @@ router.route('/:id')
 
           else return res.status(202).json(user);
         });
-      };
-    }
+      }
     else {
       res.status(500).json({message: "something went wrong!"});
     }

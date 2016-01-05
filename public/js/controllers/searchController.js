@@ -4,7 +4,7 @@ function SearchController(User, Weather, $http, $state) {
   console.log('instance of search controller!');
   let self = this;
 
-  self.searchLocation = undefined;
+  self.searchFor = undefined;
 
   self.coords = {
     lat: null,
@@ -13,16 +13,18 @@ function SearchController(User, Weather, $http, $state) {
 
   self.location = "Your Location";
 
-  self.searchWeather = function($http, search) {
-    $http({
-      method: 'GET',
-      url: '/location/'+search
-    }).then( (data) => {
-      console.log('we got data!');
-    })
+  self.searchWeather = function() {
+    if (self.searchFor) {
+      $http({
+        method: 'GET',
+        url: '/location/'+self.searchFor
+      }).then( (data) => {
+        console.log('we got data!');
+      })
+    }
   }
 
-  self.load = function($http) {
+  self.load = function() {
     console.log('getting current location!');
     navigator.geolocation.getCurrentPosition(success)
   }

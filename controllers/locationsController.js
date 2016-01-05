@@ -10,9 +10,9 @@ const GOOGLE_KEY = process.env.GOOGLE_KEY;
 router.route('/:location')
   .get( (req,res) => {
     let location = req.params.location;
-    let url = 'http://maps.googleapis.com/maps/api/geocode/json?address='+location+'&key='+GOOGLE_KEY;
+    let url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+location+'&key='+GOOGLE_KEY;
 
-    weatherAPI(url, (body) => {
+    googleAPI(url, (body) => {
       res.json(JSON.parse(body));
     });
   });

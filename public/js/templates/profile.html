@@ -2,13 +2,16 @@
   <div class="row">
     <form>
       <div class="row">
-        <div class="input-field col s6">
+        <h3 class="flow-text">Search for weather:</h3>
+        <div class="input-field col s4">
           <input ng-model="profile.searchFor" placeholder="New York City or 10001" id="location" type="text">
           <label for="location">City or Zipcode</label>
         </div>
       </div>
       <div class="row">
-
+        <button ng-click="profile.searchWeather()" class="btn waves-effect waves-light">
+          Search!
+        </button>
       </div>
     </form>
   </div>

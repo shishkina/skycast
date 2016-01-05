@@ -33,6 +33,21 @@ function User($http) {
 
     getLoginState: function() {
       return loginState;
+    },
+
+    addQuery: function(query) {
+      if (currentUser.queries.indexOf(query) === -1) {
+        //apply change only if the query does not already exist in the array
+        currentUser.queries.push(query);
+      }
+    },
+
+    removeQuery: function(query) {
+      let queryIndex = currentUser.queries.indexOf(query);
+      if (index > -1) {
+        currentUser.queries.splice(queryIndex, 1);
+      }
     }
+
   }
 }

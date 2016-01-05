@@ -9,7 +9,6 @@ angular.module('skyCast', [
   .controller('NavController', NavController)
   .controller('SignupController', SignupController)
   .controller('SearchController', SearchController)
-  .controller('ProfileController', ProfileController)
   .run(['$rootScope','$state','User', function($rootScope, $state, User) {
 
     $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
@@ -30,4 +29,3 @@ angular.module('skyCast', [
   LoginController.$inject = ['$http', '$state', 'User'];
   NavController.$inject = ['User', '$state', '$http'];
   SearchController.$inject = ['User', 'Weather', '$http', '$state'];
-  ProfileController.$inject = ['User', '$timeout'];

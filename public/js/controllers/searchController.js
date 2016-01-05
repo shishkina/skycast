@@ -4,7 +4,7 @@ function SearchController(User, Weather, $http, $state) {
   console.log('instance of search controller!');
   let self = this;
 
-  self.zipcode = undefined;
+  self.searchLocation = undefined;
 
   self.coords = {
     lat: null,
@@ -13,16 +13,13 @@ function SearchController(User, Weather, $http, $state) {
 
   self.location = "Your Location";
 
-  self.searchByZip = function($http) {
-    console.log('searching by zip code');
-    if (self.zipcode) {
-      $http({
-        method: 'GET',
-        url: 'http://maps.googleapis.com/maps/api/geocode/json?address='+self.zipode+'&sensor=true'
-      }).then( (data) => {
-        console.log('we got data!');
-      })
-    }
+  self.searchWeather = function($http, search) {
+    $http({
+      method: 'GET',
+      url: '/location/'+search
+    }).then( (data) => {
+      console.log('we got data!');
+    })
   }
 
   self.load = function($http) {
@@ -33,10 +30,6 @@ function SearchController(User, Weather, $http, $state) {
   self.getWeather = function() {
     return Weather.getCurrentWeather();
   }
-
-  //setTimeout(self.load($http), 500);
-
-  //helper functions:
 
   function success(pos) {
     console.log('In success function!');

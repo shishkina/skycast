@@ -25,9 +25,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 let user = require('./controllers/usersController');
 let weather = require('./controllers/weatherController');
+let location = require('./controllers/locationsController');
 
 app.use('/user', user);
 app.use('/weather', weather);
+app.use('/location', location);
 
 
 app.use(express.static(path.join(__dirname, '/public')));

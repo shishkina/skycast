@@ -82,74 +82,43 @@ router.use( (req,res,next) => {
   }
 });
 
+router.route('/:id')
+  .get( (req, res) => {
+    //gets a user page
+  })
+  .put( (req, res) => {
+    //updates a user
+    let userID = req.params.id;
+    let newQuery = req.body.query;
+    let removeQuery = req.boy.removeQuery;
+    if (removeQuery) {
+    User.findByIdAndUpdate(
+      userID,
+      {$pull: {queries: removeQuery}},
+      {new: true},
+      (error, user) => {
+        if(error) res.status(400).send({message: error.errmsg});
 
-
-
-function getUser(req,res) {
-  console.log('getting a user');
-}
-
-function getAuth(req, res) {
-  console.log('Authenticating user HTTP header token');
-
-}
-
-//POST
-function newUser(req,res) {
-  //create new user route
-
-  let user = new User(req.body);
-
-  user.save( (error) => {
-    if (error) {
-      res.json({
-        message: 'Could not create new user because of:' + error,
-        success: false
+        else return res.status(202).json(user);
       });
+    }
+
+    else if (newQuery) {
+      //adds a new query
+      User.findByIdAndUpdate(
+        userID,
+        {$push: {queries: newQuery}},
+        {new: true},
+        (error, user) => {
+          if(error) res.status(400).send({message: error.errmsg});
+
+          else return res.status(202).json(user);
+        });
+      };
     }
     else {
-      res.json({
-        user: user,
-        success: true
-      });
+      res.status(500).json({message: "something went wrong!"});
     }
-  });
-}
-
-function loginUser(req, res) {
-  let userParams = req.body;
-  User.findOne({email: userParams.email}, (error, user) => {
-    if (error) {
-      throw error;
-    }
-    else if (!user) {
-      res.status(500).json({message: 'User not found!'});
-    }
-    else {
-      user.authenticate(userParams.password, (err, isMatch) => {
-        if (err) throw err;
-
-        if (isMatch) {
-          let token = jwt.sign(user, secret, {expiresIn: 1444000});
-
-          res.json({
-            success: true,
-            message: 'Authorization successful',
-            user: user._doc,
-            token: token
-          });
-        }
-        else {
-          return res.status(401).send({message: 'unauthorized access'})
-        }
-      });
-    }
-  });
-}
-
-//PUT
-function updateUser(req,res) {
-
-}
+  })
 
 module.exports = router;

@@ -11,6 +11,8 @@ function SearchController(User, Weather, $http, $state) {
     lng: null
   }
 
+  self.location = "Your Location";
+
   self.searchByZip = function($http) {
     console.log('searching by zip code');
     if (self.zipcode) {

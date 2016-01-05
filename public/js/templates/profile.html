@@ -1,1 +1,28 @@
-really awesome user profile page
+<div ng-controller="SearchController as profile" ng-init="profile.load()" class="container">
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card-panel teal">
+        <h4 class="white-text">Current weather:</h4>
+        <h5 class="white-text">{{profile.location}}</h5>
+        <span class="white-text">
+          <p> {{profile.getWeater().currently.summary}} </p>
+          <p>Temperature: {{profile.getWeather().currently.temperature}} &#8457</p>
+          <p>Feels Like:  {{profile.getWeather().currently.apparentTemperature}} &#8457</p>
+        </span>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="card-panel teal">
+        <h4 class="white-text">Looking Ahead:</h4>
+        <span class="white-text">
+          <p> {{profile.weather.daily.summary}} </p>
+          <p>Max temperature tomorrow: {{profile.getWeather().daily.data[0].temperatureMax}} &#8457</p>
+          <p>Min temperature tomorrow: {{profile.getWeather().daily.data[0].temperatureMin}} &#8457</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

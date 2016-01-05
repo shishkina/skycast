@@ -1,5 +1,9 @@
 'use strict';
 
-function ProfileController($http, $scope, User) {
-
+function ProfileController(User, $timeout) {
+    self.getUserQueries = function() {
+      $timeout( () => {
+         return User.getQueries();
+      },1000)    
+    }
 }

@@ -39,6 +39,10 @@ function SearchController(User, Weather, $http, $state) {
 //end package
   }
 
+  self.getUser = function() {
+    return User;
+  }
+
   self.load = function() {
     console.log('getting current location!');
     navigator.geolocation.getCurrentPosition(success)

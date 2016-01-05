@@ -35,6 +35,10 @@ function User($http) {
       return loginState;
     },
 
+    getQueries: function() {
+      return currentUser.queries;
+    },
+
     addQuery: function(query) {
       if (currentUser.queries.indexOf(query) === -1) {
         //apply change only if the query does not already exist in the array

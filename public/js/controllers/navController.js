@@ -27,4 +27,8 @@ function NavController($http, $state, User) {
   self.logIn = function() {
     $state.go('login');
   }
+
+  self.profile = function() {
+    $state.go('profile');
+  }
 }

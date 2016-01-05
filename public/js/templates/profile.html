@@ -10,9 +10,9 @@
         Search!
       </button>
     </form>
-    <div class="col s12 m6">
+    <div class="card-panel white col s12 m6">
       <h3 class="flow-text">Past Searches:</h3>
-      <ul class="collection">
+      <ul class="collection" style="height:150px;overflow:scroll;">
         <li ng-repeat="query in profile.getUser().getQueries() track by $index" class="collection-item">{{query}}</li>
       </ul>
     </div>
